@@ -1,0 +1,2256 @@
+{
+  "metadata": {
+    "model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "top_k": 15,
+    "device": "mps",
+    "description": "Real next-token probabilities extracted from an open-weight model for educational watermarking demonstrations.",
+    "watermarking": "not applied in Python extraction stage"
+  },
+  "prompts": [
+    {
+      "prompt_id": "P01",
+      "prompt": "The crew circulated the well clean and prepared to",
+      "input_token_count": 9,
+      "candidates": [
+        {
+          "rank": 1,
+          "token_id": 1191,
+          "token": " start",
+          "probability": 0.080322265625,
+          "logit": 18.5625
+        },
+        {
+          "rank": 2,
+          "token_id": 3271,
+          "token": " move",
+          "probability": 0.050262451171875,
+          "logit": 18.09375
+        },
+        {
+          "rank": 3,
+          "token_id": 728,
+          "token": " go",
+          "probability": 0.03509521484375,
+          "logit": 17.734375
+        },
+        {
+          "rank": 4,
+          "token_id": 1968,
+          "token": " head",
+          "probability": 0.031463623046875,
+          "logit": 17.625
+        },
+        {
+          "rank": 5,
+          "token_id": 3161,
+          "token": " begin",
+          "probability": 0.0273284912109375,
+          "logit": 17.484375
+        },
+        {
+          "rank": 6,
+          "token_id": 30546,
+          "token": " drill",
+          "probability": 0.02691650390625,
+          "logit": 17.46875
+        },
+        {
+          "rank": 7,
+          "token_id": 32671,
+          "token": " ______",
+          "probability": 0.0248870849609375,
+          "logit": 17.390625
+        },
+        {
+          "rank": 8,
+          "token_id": 2795,
+          "token": " load",
+          "probability": 0.0203094482421875,
+          "logit": 17.1875
+        },
+        {
+          "rank": 9,
+          "token_id": 5274,
+          "token": " leave",
+          "probability": 0.0179290771484375,
+          "logit": 17.0625
+        },
+        {
+          "rank": 10,
+          "token_id": 13834,
+          "token": " pump",
+          "probability": 0.0160675048828125,
+          "logit": 16.953125
+        },
+        {
+          "rank": 11,
+          "token_id": 15688,
+          "token": " resume",
+          "probability": 0.0160675048828125,
+          "logit": 16.953125
+        },
+        {
+          "rank": 12,
+          "token_id": 3265,
+          "token": " close",
+          "probability": 0.0158233642578125,
+          "logit": 16.9375
+        },
+        {
+          "rank": 13,
+          "token_id": 1598,
+          "token": " run",
+          "probability": 0.01509857177734375,
+          "logit": 16.890625
+        },
+        {
+          "rank": 14,
+          "token_id": 10354,
+          "token": " proceed",
+          "probability": 0.01509857177734375,
+          "logit": 16.890625
+        },
+        {
+          "rank": 15,
+          "token_id": 653,
+          "token": " do",
+          "probability": 0.0139617919921875,
+          "logit": 16.8125
+        }
+      ]
+    },
+    {
+      "prompt_id": "P02",
+      "prompt": "After the packer was set, the operator continued to",
+      "input_token_count": 11,
+      "candidates": [
+        {
+          "rank": 1,
+          "token_id": 22986,
+          "token": " observe",
+          "probability": 0.08026123046875,
+          "logit": 20.734375
+        },
+        {
+          "rank": 2,
+          "token_id": 13834,
+          "token": " pump",
+          "probability": 0.07305908203125,
+          "logit": 20.640625
+        },
+        {
+          "rank": 3,
+          "token_id": 4225,
+          "token": " circ",
+          "probability": 0.0634765625,
+          "logit": 20.5
+        },
+        {
+          "rank": 4,
+          "token_id": 5263,
+          "token": " increase",
+          "probability": 0.054290771484375,
+          "logit": 20.34375
+        },
+        {
+          "rank": 5,
+          "token_id": 3796,
+          "token": " apply",
+          "probability": 0.04718017578125,
+          "logit": 20.203125
+        },
+        {
+          "rank": 6,
+          "token_id": 912,
+          "token": " add",
+          "probability": 0.035614013671875,
+          "logit": 19.921875
+        },
+        {
+          "rank": 7,
+          "token_id": 6815,
+          "token": " pull",
+          "probability": 0.035614013671875,
+          "logit": 19.921875
+        },
+        {
+          "rank": 8,
+          "token_id": 15551,
+          "token": " inject",
+          "probability": 0.034515380859375,
+          "logit": 19.890625
+        },
+        {
+          "rank": 9,
+          "token_id": 1598,
+          "token": " run",
+          "probability": 0.0286102294921875,
+          "logit": 19.703125
+        },
+        {
+          "rank": 10,
+          "token_id": 990,
+          "token": " use",
+          "probability": 0.0272979736328125,
+          "logit": 19.65625
+        },
+        {
+          "rank": 11,
+          "token_id": 4828,
+          "token": " raise",
+          "probability": 0.0248565673828125,
+          "logit": 19.5625
+        },
+        {
+          "rank": 12,
+          "token_id": 14476,
+          "token": " operate",
+          "probability": 0.0237274169921875,
+          "logit": 19.515625
+        },
+        {
+          "rank": 13,
+          "token_id": 2736,
+          "token": " perform",
+          "probability": 0.0233612060546875,
+          "logit": 19.5
+        },
+        {
+          "rank": 14,
+          "token_id": 4484,
+          "token": " push",
+          "probability": 0.021270751953125,
+          "logit": 19.40625
+        },
+        {
+          "rank": 15,
+          "token_id": 3493,
+          "token": " press",
+          "probability": 0.018768310546875,
+          "logit": 19.28125
+        }
+      ]
+    },
+    {
+      "prompt_id": "P03",
+      "prompt": "With TD reached, the drilling team began to",
+      "input_token_count": 9,
+      "candidates": [
+        {
+          "rank": 1,
+          "token_id": 30546,
+          "token": " drill",
+          "probability": 0.2196044921875,
+          "logit": 19.546875
+        },
+        {
+          "rank": 2,
+          "token_id": 4582,
+          "token": " install",
+          "probability": 0.058197021484375,
+          "logit": 18.21875
+        },
+        {
+          "rank": 3,
+          "token_id": 4722,
+          "token": " lower",
+          "probability": 0.042572021484375,
+          "logit": 17.90625
+        },
+        {
+          "rank": 4,
+          "token_id": 3271,
+          "token": " move",
+          "probability": 0.031158447265625,
+          "logit": 17.59375
+        },
+        {
+          "rank": 5,
+          "token_id": 975,
+          "token": " work",
+          "probability": 0.0262298583984375,
+          "logit": 17.421875
+        },
+        {
+          "rank": 6,
+          "token_id": 4828,
+          "token": " raise",
+          "probability": 0.0262298583984375,
+          "logit": 17.421875
+        },
+        {
+          "rank": 7,
+          "token_id": 6815,
+          "token": " pull",
+          "probability": 0.0171966552734375,
+          "logit": 17.0
+        },
+        {
+          "rank": 8,
+          "token_id": 13834,
+          "token": " pump",
+          "probability": 0.016937255859375,
+          "logit": 16.984375
+        },
+        {
+          "rank": 9,
+          "token_id": 4057,
+          "token": " remove",
+          "probability": 0.0161590576171875,
+          "logit": 16.9375
+        },
+        {
+          "rank": 10,
+          "token_id": 738,
+          "token": " set",
+          "probability": 0.01219940185546875,
+          "logit": 16.65625
+        },
+        {
+          "rank": 11,
+          "token_id": 32671,
+          "token": " ______",
+          "probability": 0.0111083984375,
+          "logit": 16.5625
+        },
+        {
+          "rank": 12,
+          "token_id": 10549,
+          "token": " prepare",
+          "probability": 0.01059722900390625,
+          "logit": 16.515625
+        },
+        {
+          "rank": 13,
+          "token_id": 990,
+          "token": " use",
+          "probability": 0.0101165771484375,
+          "logit": 16.46875
+        },
+        {
+          "rank": 14,
+          "token_id": 4225,
+          "token": " circ",
+          "probability": 0.00965118408203125,
+          "logit": 16.421875
+        },
+        {
+          "rank": 15,
+          "token_id": 11912,
+          "token": " advance",
+          "probability": 0.00949859619140625,
+          "logit": 16.40625
+        }
+      ]
+    },
+    {
+      "prompt_id": "P04",
+      "prompt": "The liner was run to depth, and the crew immediately",
+      "input_token_count": 11,
+      "candidates": [
+        {
+          "rank": 1,
+          "token_id": 6009,
+          "token": " began",
+          "probability": 0.07861328125,
+          "logit": 18.484375
+        },
+        {
+          "rank": 2,
+          "token_id": 32671,
+          "token": " ______",
+          "probability": 0.055755615234375,
+          "logit": 18.140625
+        },
+        {
+          "rank": 3,
+          "token_id": 4961,
+          "token": " reported",
+          "probability": 0.03277587890625,
+          "logit": 17.609375
+        },
+        {
+          "rank": 4,
+          "token_id": 3855,
+          "token": " started",
+          "probability": 0.031768798828125,
+          "logit": 17.578125
+        },
+        {
+          "rank": 5,
+          "token_id": 3937,
+          "token": " went",
+          "probability": 0.0267486572265625,
+          "logit": 17.40625
+        },
+        {
+          "rank": 6,
+          "token_id": 2115,
+          "token": " left",
+          "probability": 0.021484375,
+          "logit": 17.1875
+        },
+        {
+          "rank": 7,
+          "token_id": 738,
+          "token": " set",
+          "probability": 0.015716552734375,
+          "logit": 16.875
+        },
+        {
+          "rank": 8,
+          "token_id": 5927,
+          "token": " returned",
+          "probability": 0.01523590087890625,
+          "logit": 16.84375
+        },
+        {
+          "rank": 9,
+          "token_id": 6476,
+          "token": " felt",
+          "probability": 0.014312744140625,
+          "logit": 16.78125
+        },
+        {
+          "rank": 10,
+          "token_id": 38820,
+          "token": " lowered",
+          "probability": 0.01387786865234375,
+          "logit": 16.75
+        },
+        {
+          "rank": 11,
+          "token_id": 3867,
+          "token": " took",
+          "probability": 0.01323699951171875,
+          "logit": 16.703125
+        },
+        {
+          "rank": 12,
+          "token_id": 19383,
+          "token": " headed",
+          "probability": 0.01303863525390625,
+          "logit": 16.6875
+        },
+        {
+          "rank": 13,
+          "token_id": 1030,
+          "token": " had",
+          "probability": 0.01224517822265625,
+          "logit": 16.625
+        },
+        {
+          "rank": 14,
+          "token_id": 22978,
+          "token": " abandoned",
+          "probability": 0.011871337890625,
+          "logit": 16.59375
+        },
+        {
+          "rank": 15,
+          "token_id": 6519,
+          "token": " turned",
+          "probability": 0.01015472412109375,
+          "logit": 16.4375
+        }
+      ]
+    },
+    {
+      "prompt_id": "P05",
+      "prompt": "Once cement was pumped and displaced, the team continued to",
+      "input_token_count": 11,
+      "candidates": [
+        {
+          "rank": 1,
+          "token_id": 13834,
+          "token": " pump",
+          "probability": 0.069091796875,
+          "logit": 18.40625
+        },
+        {
+          "rank": 2,
+          "token_id": 8718,
+          "token": " monitor",
+          "probability": 0.06390380859375,
+          "logit": 18.328125
+        },
+        {
+          "rank": 3,
+          "token_id": 912,
+          "token": " add",
+          "probability": 0.059112548828125,
+          "logit": 18.25
+        },
+        {
+          "rank": 4,
+          "token_id": 975,
+          "token": " work",
+          "probability": 0.051361083984375,
+          "logit": 18.109375
+        },
+        {
+          "rank": 5,
+          "token_id": 4914,
+          "token": " pour",
+          "probability": 0.031158447265625,
+          "logit": 17.609375
+        },
+        {
+          "rank": 6,
+          "token_id": 990,
+          "token": " use",
+          "probability": 0.025421142578125,
+          "logit": 17.40625
+        },
+        {
+          "rank": 7,
+          "token_id": 30546,
+          "token": " drill",
+          "probability": 0.0231475830078125,
+          "logit": 17.3125
+        },
+        {
+          "rank": 8,
+          "token_id": 3796,
+          "token": " apply",
+          "probability": 0.020111083984375,
+          "logit": 17.171875
+        },
+        {
+          "rank": 9,
+          "token_id": 22986,
+          "token": " observe",
+          "probability": 0.020111083984375,
+          "logit": 17.171875
+        },
+        {
+          "rank": 10,
+          "token_id": 4057,
+          "token": " remove",
+          "probability": 0.0171966552734375,
+          "logit": 17.015625
+        },
+        {
+          "rank": 11,
+          "token_id": 3920,
+          "token": " study",
+          "probability": 0.0166778564453125,
+          "logit": 16.984375
+        },
+        {
+          "rank": 12,
+          "token_id": 2736,
+          "token": " perform",
+          "probability": 0.013824462890625,
+          "logit": 16.796875
+        },
+        {
+          "rank": 13,
+          "token_id": 4240,
+          "token": " clean",
+          "probability": 0.012786865234375,
+          "logit": 16.71875
+        },
+        {
+          "rank": 14,
+          "token_id": 3271,
+          "token": " move",
+          "probability": 0.0118255615234375,
+          "logit": 16.640625
+        },
+        {
+          "rank": 15,
+          "token_id": 6629,
+          "token": " measure",
+          "probability": 0.0114593505859375,
+          "logit": 16.609375
+        }
+      ]
+    },
+    {
+      "prompt_id": "P06",
+      "prompt": "The pressure test held, so the crew prepared to",
+      "input_token_count": 10,
+      "candidates": [
+        {
+          "rank": 1,
+          "token_id": 5274,
+          "token": " leave",
+          "probability": 0.0697021484375,
+          "logit": 18.5625
+        },
+        {
+          "rank": 2,
+          "token_id": 728,
+          "token": " go",
+          "probability": 0.048675537109375,
+          "logit": 18.203125
+        },
+        {
+          "rank": 3,
+          "token_id": 1191,
+          "token": " start",
+          "probability": 0.037322998046875,
+          "logit": 17.9375
+        },
+        {
+          "rank": 4,
+          "token_id": 3271,
+          "token": " move",
+          "probability": 0.036163330078125,
+          "logit": 17.90625
+        },
+        {
+          "rank": 5,
+          "token_id": 32671,
+          "token": " ______",
+          "probability": 0.0295257568359375,
+          "logit": 17.703125
+        },
+        {
+          "rank": 6,
+          "token_id": 1896,
+          "token": " take",
+          "probability": 0.0272979736328125,
+          "logit": 17.625
+        },
+        {
+          "rank": 7,
+          "token_id": 4479,
+          "token": " board",
+          "probability": 0.0252532958984375,
+          "logit": 17.546875
+        },
+        {
+          "rank": 8,
+          "token_id": 1968,
+          "token": " head",
+          "probability": 0.023345947265625,
+          "logit": 17.46875
+        },
+        {
+          "rank": 9,
+          "token_id": 11515,
+          "token": " depart",
+          "probability": 0.02227783203125,
+          "logit": 17.421875
+        },
+        {
+          "rank": 10,
+          "token_id": 3725,
+          "token": " enter",
+          "probability": 0.021942138671875,
+          "logit": 17.40625
+        },
+        {
+          "rank": 11,
+          "token_id": 3161,
+          "token": " begin",
+          "probability": 0.0206146240234375,
+          "logit": 17.34375
+        },
+        {
+          "rank": 12,
+          "token_id": 7050,
+          "token": " launch",
+          "probability": 0.0184783935546875,
+          "logit": 17.234375
+        },
+        {
+          "rank": 13,
+          "token_id": 653,
+          "token": " do",
+          "probability": 0.01372528076171875,
+          "logit": 16.9375
+        },
+        {
+          "rank": 14,
+          "token_id": 3060,
+          "token": " continue",
+          "probability": 0.01155853271484375,
+          "logit": 16.765625
+        },
+        {
+          "rank": 15,
+          "token_id": 1281,
+          "token": " make",
+          "probability": 0.011383056640625,
+          "logit": 16.75
+        }
+      ]
+    },
+    {
+      "prompt_id": "P07",
+      "prompt": "The wellhead was nippled up, and the operator started to",
+      "input_token_count": 13,
+      "candidates": [
+        {
+          "rank": 1,
+          "token_id": 6815,
+          "token": " pull",
+          "probability": 0.041595458984375,
+          "logit": 18.46875
+        },
+        {
+          "rank": 2,
+          "token_id": 13834,
+          "token": " pump",
+          "probability": 0.040313720703125,
+          "logit": 18.4375
+        },
+        {
+          "rank": 3,
+          "token_id": 4828,
+          "token": " raise",
+          "probability": 0.0390625,
+          "logit": 18.40625
+        },
+        {
+          "rank": 4,
+          "token_id": 11893,
+          "token": " lift",
+          "probability": 0.031402587890625,
+          "logit": 18.1875
+        },
+        {
+          "rank": 5,
+          "token_id": 3271,
+          "token": " move",
+          "probability": 0.02813720703125,
+          "logit": 18.078125
+        },
+        {
+          "rank": 6,
+          "token_id": 4722,
+          "token": " lower",
+          "probability": 0.024444580078125,
+          "logit": 17.9375
+        },
+        {
+          "rank": 7,
+          "token_id": 30546,
+          "token": " drill",
+          "probability": 0.0236968994140625,
+          "logit": 17.90625
+        },
+        {
+          "rank": 8,
+          "token_id": 3265,
+          "token": " close",
+          "probability": 0.022613525390625,
+          "logit": 17.859375
+        },
+        {
+          "rank": 9,
+          "token_id": 975,
+          "token": " work",
+          "probability": 0.017608642578125,
+          "logit": 17.609375
+        },
+        {
+          "rank": 10,
+          "token_id": 25367,
+          "token": " climb",
+          "probability": 0.017608642578125,
+          "logit": 17.609375
+        },
+        {
+          "rank": 11,
+          "token_id": 32671,
+          "token": " ______",
+          "probability": 0.017608642578125,
+          "logit": 17.609375
+        },
+        {
+          "rank": 12,
+          "token_id": 2795,
+          "token": " load",
+          "probability": 0.0162811279296875,
+          "logit": 17.53125
+        },
+        {
+          "rank": 13,
+          "token_id": 1787,
+          "token": " open",
+          "probability": 0.0160369873046875,
+          "logit": 17.515625
+        },
+        {
+          "rank": 14,
+          "token_id": 4582,
+          "token": " install",
+          "probability": 0.01554107666015625,
+          "logit": 17.484375
+        },
+        {
+          "rank": 15,
+          "token_id": 30743,
+          "token": " ____",
+          "probability": 0.01308441162109375,
+          "logit": 17.3125
+        }
+      ]
+    },
+    {
+      "prompt_id": "P08",
+      "prompt": "After pulling the BHA to surface, the crew began to",
+      "input_token_count": 12,
+      "candidates": [
+        {
+          "rank": 1,
+          "token_id": 5293,
+          "token": " notice",
+          "probability": 0.1131591796875,
+          "logit": 20.328125
+        },
+        {
+          "rank": 2,
+          "token_id": 22986,
+          "token": " observe",
+          "probability": 0.06756591796875,
+          "logit": 19.8125
+        },
+        {
+          "rank": 3,
+          "token_id": 3139,
+          "token": " experience",
+          "probability": 0.054290771484375,
+          "logit": 19.59375
+        },
+        {
+          "rank": 4,
+          "token_id": 1490,
+          "token": " see",
+          "probability": 0.035064697265625,
+          "logit": 19.15625
+        },
+        {
+          "rank": 5,
+          "token_id": 15207,
+          "token": " suspect",
+          "probability": 0.0260467529296875,
+          "logit": 18.859375
+        },
+        {
+          "rank": 6,
+          "token_id": 13834,
+          "token": " pump",
+          "probability": 0.0252532958984375,
+          "logit": 18.828125
+        },
+        {
+          "rank": 7,
+          "token_id": 4225,
+          "token": " circ",
+          "probability": 0.0248565673828125,
+          "logit": 18.8125
+        },
+        {
+          "rank": 8,
+          "token_id": 2666,
+          "token": " feel",
+          "probability": 0.0240936279296875,
+          "logit": 18.78125
+        },
+        {
+          "rank": 9,
+          "token_id": 1779,
+          "token": " check",
+          "probability": 0.0176239013671875,
+          "logit": 18.46875
+        },
+        {
+          "rank": 10,
+          "token_id": 2736,
+          "token": " perform",
+          "probability": 0.0143890380859375,
+          "logit": 18.265625
+        },
+        {
+          "rank": 11,
+          "token_id": 12828,
+          "token": " encounter",
+          "probability": 0.0143890380859375,
+          "logit": 18.265625
+        },
+        {
+          "rank": 12,
+          "token_id": 23643,
+          "token": " analyze",
+          "probability": 0.0143890380859375,
+          "logit": 18.265625
+        },
+        {
+          "rank": 13,
+          "token_id": 1477,
+          "token": " find",
+          "probability": 0.013946533203125,
+          "logit": 18.234375
+        },
+        {
+          "rank": 14,
+          "token_id": 6815,
+          "token": " pull",
+          "probability": 0.013946533203125,
+          "logit": 18.234375
+        },
+        {
+          "rank": 15,
+          "token_id": 13083,
+          "token": " realize",
+          "probability": 0.01372528076171875,
+          "logit": 18.21875
+        }
+      ]
+    },
+    {
+      "prompt_id": "P09",
+      "prompt": "The BOP was function tested, and the crew then",
+      "input_token_count": 11,
+      "candidates": [
+        {
+          "rank": 1,
+          "token_id": 10636,
+          "token": " entered",
+          "probability": 0.051025390625,
+          "logit": 18.140625
+        },
+        {
+          "rank": 2,
+          "token_id": 3937,
+          "token": " went",
+          "probability": 0.04571533203125,
+          "logit": 18.03125
+        },
+        {
+          "rank": 3,
+          "token_id": 2115,
+          "token": " left",
+          "probability": 0.03912353515625,
+          "logit": 17.875
+        },
+        {
+          "rank": 4,
+          "token_id": 7726,
+          "token": " moved",
+          "probability": 0.03912353515625,
+          "logit": 17.875
+        },
+        {
+          "rank": 5,
+          "token_id": 44274,
+          "token": " proceeded",
+          "probability": 0.033447265625,
+          "logit": 17.71875
+        },
+        {
+          "rank": 6,
+          "token_id": 32671,
+          "token": " ______",
+          "probability": 0.032928466796875,
+          "logit": 17.703125
+        },
+        {
+          "rank": 7,
+          "token_id": 10660,
+          "token": " performed",
+          "probability": 0.03045654296875,
+          "logit": 17.625
+        },
+        {
+          "rank": 8,
+          "token_id": 13075,
+          "token": " conducted",
+          "probability": 0.027740478515625,
+          "logit": 17.53125
+        },
+        {
+          "rank": 9,
+          "token_id": 6009,
+          "token": " began",
+          "probability": 0.0196685791015625,
+          "logit": 17.1875
+        },
+        {
+          "rank": 10,
+          "token_id": 83469,
+          "token": " boarded",
+          "probability": 0.0190582275390625,
+          "logit": 17.15625
+        },
+        {
+          "rank": 11,
+          "token_id": 3855,
+          "token": " started",
+          "probability": 0.018768310546875,
+          "logit": 17.140625
+        },
+        {
+          "rank": 12,
+          "token_id": 3867,
+          "token": " took",
+          "probability": 0.014617919921875,
+          "logit": 16.890625
+        },
+        {
+          "rank": 13,
+          "token_id": 5927,
+          "token": " returned",
+          "probability": 0.013519287109375,
+          "logit": 16.8125
+        },
+        {
+          "rank": 14,
+          "token_id": 10030,
+          "token": " prepared",
+          "probability": 0.01174163818359375,
+          "logit": 16.671875
+        },
+        {
+          "rank": 15,
+          "token_id": 8145,
+          "token": " completed",
+          "probability": 0.0110321044921875,
+          "logit": 16.609375
+        }
+      ]
+    },
+    {
+      "prompt_id": "P10",
+      "prompt": "The pill was spotted across the zone, and the operator prepared to",
+      "input_token_count": 13,
+      "candidates": [
+        {
+          "rank": 1,
+          "token_id": 7050,
+          "token": " launch",
+          "probability": 0.05584716796875,
+          "logit": 18.21875
+        },
+        {
+          "rank": 2,
+          "token_id": 1896,
+          "token": " take",
+          "probability": 0.042144775390625,
+          "logit": 17.9375
+        },
+        {
+          "rank": 3,
+          "token_id": 990,
+          "token": " use",
+          "probability": 0.0236358642578125,
+          "logit": 17.359375
+        },
+        {
+          "rank": 4,
+          "token_id": 5889,
+          "token": " respond",
+          "probability": 0.0225677490234375,
+          "logit": 17.3125
+        },
+        {
+          "rank": 5,
+          "token_id": 3484,
+          "token": " deal",
+          "probability": 0.0162506103515625,
+          "logit": 16.984375
+        },
+        {
+          "rank": 6,
+          "token_id": 3624,
+          "token": " send",
+          "probability": 0.0162506103515625,
+          "logit": 16.984375
+        },
+        {
+          "rank": 7,
+          "token_id": 1281,
+          "token": " make",
+          "probability": 0.0159912109375,
+          "logit": 16.96875
+        },
+        {
+          "rank": 8,
+          "token_id": 3271,
+          "token": " move",
+          "probability": 0.01305389404296875,
+          "logit": 16.765625
+        },
+        {
+          "rank": 9,
+          "token_id": 5258,
+          "token": " receive",
+          "probability": 0.01245880126953125,
+          "logit": 16.71875
+        },
+        {
+          "rank": 10,
+          "token_id": 10517,
+          "token": " deploy",
+          "probability": 0.0117034912109375,
+          "logit": 16.65625
+        },
+        {
+          "rank": 11,
+          "token_id": 653,
+          "token": " do",
+          "probability": 0.010009765625,
+          "logit": 16.5
+        },
+        {
+          "rank": 12,
+          "token_id": 728,
+          "token": " go",
+          "probability": 0.00970458984375,
+          "logit": 16.46875
+        },
+        {
+          "rank": 13,
+          "token_id": 1160,
+          "token": " act",
+          "probability": 0.00940704345703125,
+          "logit": 16.4375
+        },
+        {
+          "rank": 14,
+          "token_id": 3940,
+          "token": " fire",
+          "probability": 0.00940704345703125,
+          "logit": 16.4375
+        },
+        {
+          "rank": 15,
+          "token_id": 6359,
+          "token": " deliver",
+          "probability": 0.0088348388671875,
+          "logit": 16.375
+        }
+      ]
+    },
+    {
+      "prompt_id": "PGEN",
+      "prompt": "It was a pleasant afternoon, and the children decided to",
+      "input_token_count": 11,
+      "candidates": [
+        {
+          "rank": 1,
+          "token_id": 728,
+          "token": " go",
+          "probability": 0.247314453125,
+          "logit": 21.671875
+        },
+        {
+          "rank": 2,
+          "token_id": 614,
+          "token": " have",
+          "probability": 0.1781005859375,
+          "logit": 21.34375
+        },
+        {
+          "rank": 3,
+          "token_id": 1486,
+          "token": " play",
+          "probability": 0.1500244140625,
+          "logit": 21.171875
+        },
+        {
+          "rank": 4,
+          "token_id": 1896,
+          "token": " take",
+          "probability": 0.03619384765625,
+          "logit": 19.75
+        },
+        {
+          "rank": 5,
+          "token_id": 3947,
+          "token": " visit",
+          "probability": 0.033477783203125,
+          "logit": 19.671875
+        },
+        {
+          "rank": 6,
+          "token_id": 1936,
+          "token": " build",
+          "probability": 0.0264739990234375,
+          "logit": 19.4375
+        },
+        {
+          "rank": 7,
+          "token_id": 738,
+          "token": " set",
+          "probability": 0.0216064453125,
+          "logit": 19.234375
+        },
+        {
+          "rank": 8,
+          "token_id": 8329,
+          "token": " spend",
+          "probability": 0.019378662109375,
+          "logit": 19.125
+        },
+        {
+          "rank": 9,
+          "token_id": 13186,
+          "token": " explore",
+          "probability": 0.01462554931640625,
+          "logit": 18.84375
+        },
+        {
+          "rank": 10,
+          "token_id": 6008,
+          "token": " plant",
+          "probability": 0.0131072998046875,
+          "logit": 18.734375
+        },
+        {
+          "rank": 11,
+          "token_id": 1281,
+          "token": " make",
+          "probability": 0.01270294189453125,
+          "logit": 18.703125
+        },
+        {
+          "rank": 12,
+          "token_id": 653,
+          "token": " do",
+          "probability": 0.01212310791015625,
+          "logit": 18.65625
+        },
+        {
+          "rank": 13,
+          "token_id": 4669,
+          "token": " enjoy",
+          "probability": 0.011749267578125,
+          "logit": 18.625
+        },
+        {
+          "rank": 14,
+          "token_id": 1191,
+          "token": " start",
+          "probability": 0.0077056884765625,
+          "logit": 18.203125
+        },
+        {
+          "rank": 15,
+          "token_id": 1968,
+          "token": " head",
+          "probability": 0.00746917724609375,
+          "logit": 18.171875
+        }
+      ]
+    },
+    {
+      "prompt_id": "PTECH",
+      "prompt": "Pressure test the tubing to 5,000 psi for 15",
+      "input_token_count": 16,
+      "candidates": [
+        {
+          "rank": 1,
+          "token_id": 4420,
+          "token": " minutes",
+          "probability": 0.93408203125,
+          "logit": 25.671875
+        },
+        {
+          "rank": 2,
+          "token_id": 6486,
+          "token": " seconds",
+          "probability": 0.030029296875,
+          "logit": 22.234375
+        },
+        {
+          "rank": 3,
+          "token_id": 12,
+          "token": "-",
+          "probability": 0.0119476318359375,
+          "logit": 21.3125
+        },
+        {
+          "rank": 4,
+          "token_id": 311,
+          "token": " to",
+          "probability": 0.0084686279296875,
+          "logit": 20.96875
+        },
+        {
+          "rank": 5,
+          "token_id": 1308,
+          "token": " min",
+          "probability": 0.00771331787109375,
+          "logit": 20.875
+        },
+        {
+          "rank": 6,
+          "token_id": 24835,
+          "token": " mins",
+          "probability": 0.002315521240234375,
+          "logit": 19.671875
+        },
+        {
+          "rank": 7,
+          "token_id": 4115,
+          "token": " hours",
+          "probability": 0.0016422271728515625,
+          "logit": 19.328125
+        },
+        {
+          "rank": 8,
+          "token_id": 13398,
+          "token": "-min",
+          "probability": 0.0005006790161132812,
+          "logit": 18.140625
+        },
+        {
+          "rank": 9,
+          "token_id": 23921,
+          "token": " consecutive",
+          "probability": 0.0002944469451904297,
+          "logit": 17.609375
+        },
+        {
+          "rank": 10,
+          "token_id": 2849,
+          "token": " days",
+          "probability": 0.0002722740173339844,
+          "logit": 17.53125
+        },
+        {
+          "rank": 11,
+          "token_id": 15,
+          "token": "0",
+          "probability": 0.0002639293670654297,
+          "logit": 17.5
+        },
+        {
+          "rank": 12,
+          "token_id": 481,
+          "token": " -",
+          "probability": 0.0002598762512207031,
+          "logit": 17.484375
+        },
+        {
+          "rank": 13,
+          "token_id": 23498,
+          "token": "-minute",
+          "probability": 0.00019311904907226562,
+          "logit": 17.1875
+        },
+        {
+          "rank": 14,
+          "token_id": 4142,
+          "token": "–",
+          "probability": 0.00017309188842773438,
+          "logit": 17.078125
+        },
+        {
+          "rank": 15,
+          "token_id": 1065,
+          "token": "min",
+          "probability": 0.00016260147094726562,
+          "logit": 17.015625
+        }
+      ]
+    }
+  ],
+  "generation": {
+    "seed_prompt": "After reaching TD, the crew began to",
+    "steps": [
+      {
+        "step": 1,
+        "context_before": "After reaching TD, the crew began to",
+        "chosen_token": " experience",
+        "candidates": [
+          {
+            "rank": 1,
+            "token_id": 3139,
+            "token": " experience",
+            "probability": 0.045135498046875,
+            "logit": 18.390625
+          },
+          {
+            "rank": 2,
+            "token_id": 9026,
+            "token": " execute",
+            "probability": 0.0237884521484375,
+            "logit": 17.75
+          },
+          {
+            "rank": 3,
+            "token_id": 2736,
+            "token": " perform",
+            "probability": 0.022003173828125,
+            "logit": 17.671875
+          },
+          {
+            "rank": 4,
+            "token_id": 5293,
+            "token": " notice",
+            "probability": 0.02166748046875,
+            "logit": 17.65625
+          },
+          {
+            "rank": 5,
+            "token_id": 54568,
+            "token": " descend",
+            "probability": 0.02166748046875,
+            "logit": 17.65625
+          },
+          {
+            "rank": 6,
+            "token_id": 25367,
+            "token": " climb",
+            "probability": 0.0191192626953125,
+            "logit": 17.53125
+          },
+          {
+            "rank": 7,
+            "token_id": 10549,
+            "token": " prepare",
+            "probability": 0.0188140869140625,
+            "logit": 17.515625
+          },
+          {
+            "rank": 8,
+            "token_id": 1779,
+            "token": " check",
+            "probability": 0.0160980224609375,
+            "logit": 17.359375
+          },
+          {
+            "rank": 9,
+            "token_id": 3271,
+            "token": " move",
+            "probability": 0.01560211181640625,
+            "logit": 17.328125
+          },
+          {
+            "rank": 10,
+            "token_id": 5258,
+            "token": " receive",
+            "probability": 0.0151214599609375,
+            "logit": 17.296875
+          },
+          {
+            "rank": 11,
+            "token_id": 990,
+            "token": " use",
+            "probability": 0.01215362548828125,
+            "logit": 17.078125
+          },
+          {
+            "rank": 12,
+            "token_id": 1281,
+            "token": " make",
+            "probability": 0.010894775390625,
+            "logit": 16.96875
+          },
+          {
+            "rank": 13,
+            "token_id": 1490,
+            "token": " see",
+            "probability": 0.010894775390625,
+            "logit": 16.96875
+          },
+          {
+            "rank": 14,
+            "token_id": 4211,
+            "token": " implement",
+            "probability": 0.0107269287109375,
+            "logit": 16.953125
+          },
+          {
+            "rank": 15,
+            "token_id": 32505,
+            "token": " taxi",
+            "probability": 0.0103912353515625,
+            "logit": 16.921875
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "context_before": "After reaching TD, the crew began to experience",
+        "chosen_token": " a",
+        "candidates": [
+          {
+            "rank": 1,
+            "token_id": 264,
+            "token": " a",
+            "probability": 0.2149658203125,
+            "logit": 20.125
+          },
+          {
+            "rank": 2,
+            "token_id": 458,
+            "token": " an",
+            "probability": 0.045074462890625,
+            "logit": 18.5625
+          },
+          {
+            "rank": 3,
+            "token_id": 279,
+            "token": " the",
+            "probability": 0.0226593017578125,
+            "logit": 17.875
+          },
+          {
+            "rank": 4,
+            "token_id": 15386,
+            "token": " severe",
+            "probability": 0.0209503173828125,
+            "logit": 17.796875
+          },
+          {
+            "rank": 5,
+            "token_id": 10416,
+            "token": " fuel",
+            "probability": 0.0179290771484375,
+            "logit": 17.640625
+          },
+          {
+            "rank": 6,
+            "token_id": 11048,
+            "token": " rapid",
+            "probability": 0.01763916015625,
+            "logit": 17.625
+          },
+          {
+            "rank": 7,
+            "token_id": 5089,
+            "token": " significant",
+            "probability": 0.0158233642578125,
+            "logit": 17.515625
+          },
+          {
+            "rank": 8,
+            "token_id": 94067,
+            "token": " turbulence",
+            "probability": 0.01557159423828125,
+            "logit": 17.5
+          },
+          {
+            "rank": 9,
+            "token_id": 13495,
+            "token": " symptoms",
+            "probability": 0.0150909423828125,
+            "logit": 17.46875
+          },
+          {
+            "rank": 10,
+            "token_id": 4712,
+            "token": " engine",
+            "probability": 0.01352691650390625,
+            "logit": 17.359375
+          },
+          {
+            "rank": 11,
+            "token_id": 34563,
+            "token": " abnormal",
+            "probability": 0.01175689697265625,
+            "logit": 17.21875
+          },
+          {
+            "rank": 12,
+            "token_id": 4709,
+            "token": " loss",
+            "probability": 0.01157379150390625,
+            "logit": 17.203125
+          },
+          {
+            "rank": 13,
+            "token_id": 26541,
+            "token": " excessive",
+            "probability": 0.01087188720703125,
+            "logit": 17.140625
+          },
+          {
+            "rank": 14,
+            "token_id": 1045,
+            "token": " some",
+            "probability": 0.0103759765625,
+            "logit": 17.09375
+          },
+          {
+            "rank": 15,
+            "token_id": 16829,
+            "token": " difficulty",
+            "probability": 0.00930023193359375,
+            "logit": 16.984375
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "context_before": "After reaching TD, the crew began to experience a",
+        "chosen_token": " series",
+        "candidates": [
+          {
+            "rank": 1,
+            "token_id": 4013,
+            "token": " series",
+            "probability": 0.092041015625,
+            "logit": 18.984375
+          },
+          {
+            "rank": 2,
+            "token_id": 4709,
+            "token": " loss",
+            "probability": 0.08380126953125,
+            "logit": 18.890625
+          },
+          {
+            "rank": 3,
+            "token_id": 11048,
+            "token": " rapid",
+            "probability": 0.06134033203125,
+            "logit": 18.578125
+          },
+          {
+            "rank": 4,
+            "token_id": 5089,
+            "token": " significant",
+            "probability": 0.042144775390625,
+            "logit": 18.203125
+          },
+          {
+            "rank": 5,
+            "token_id": 18472,
+            "token": " decrease",
+            "probability": 0.0328369140625,
+            "logit": 17.953125
+          },
+          {
+            "rank": 6,
+            "token_id": 52622,
+            "token": " gradual",
+            "probability": 0.023651123046875,
+            "logit": 17.625
+          },
+          {
+            "rank": 7,
+            "token_id": 19259,
+            "token": " continuous",
+            "probability": 0.0208587646484375,
+            "logit": 17.5
+          },
+          {
+            "rank": 8,
+            "token_id": 7901,
+            "token": " failure",
+            "probability": 0.01456451416015625,
+            "logit": 17.140625
+          },
+          {
+            "rank": 9,
+            "token_id": 330,
+            "token": " \"",
+            "probability": 0.0139007568359375,
+            "logit": 17.09375
+          },
+          {
+            "rank": 10,
+            "token_id": 3940,
+            "token": " fire",
+            "probability": 0.0132598876953125,
+            "logit": 17.046875
+          },
+          {
+            "rank": 11,
+            "token_id": 220,
+            "token": " ",
+            "probability": 0.01207733154296875,
+            "logit": 16.953125
+          },
+          {
+            "rank": 12,
+            "token_id": 10968,
+            "token": " sudden",
+            "probability": 0.01207733154296875,
+            "logit": 16.953125
+          },
+          {
+            "rank": 13,
+            "token_id": 1550,
+            "token": " high",
+            "probability": 0.0117034912109375,
+            "logit": 16.921875
+          },
+          {
+            "rank": 14,
+            "token_id": 4583,
+            "token": " complete",
+            "probability": 0.01116943359375,
+            "logit": 16.875
+          },
+          {
+            "rank": 15,
+            "token_id": 10416,
+            "token": " fuel",
+            "probability": 0.01116943359375,
+            "logit": 16.875
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "context_before": "After reaching TD, the crew began to experience a series",
+        "chosen_token": " of",
+        "candidates": [
+          {
+            "rank": 1,
+            "token_id": 315,
+            "token": " of",
+            "probability": 0.998046875,
+            "logit": 26.484375
+          },
+          {
+            "rank": 2,
+            "token_id": 264,
+            "token": " a",
+            "probability": 9.900331497192383e-05,
+            "logit": 17.265625
+          },
+          {
+            "rank": 3,
+            "token_id": 198,
+            "token": "\n",
+            "probability": 7.128715515136719e-05,
+            "logit": 16.9375
+          },
+          {
+            "rank": 4,
+            "token_id": 220,
+            "token": " ",
+            "probability": 6.699562072753906e-05,
+            "logit": 16.875
+          },
+          {
+            "rank": 5,
+            "token_id": 476,
+            "token": " or",
+            "probability": 5.3822994232177734e-05,
+            "logit": 16.65625
+          },
+          {
+            "rank": 6,
+            "token_id": 320,
+            "token": " (",
+            "probability": 3.999471664428711e-05,
+            "logit": 16.359375
+          },
+          {
+            "rank": 7,
+            "token_id": 13495,
+            "token": " symptoms",
+            "probability": 3.641843795776367e-05,
+            "logit": 16.265625
+          },
+          {
+            "rank": 8,
+            "token_id": 13,
+            "token": ".",
+            "probability": 2.8789043426513672e-05,
+            "logit": 16.03125
+          },
+          {
+            "rank": 9,
+            "token_id": 1112,
+            "token": "...",
+            "probability": 2.7477741241455078e-05,
+            "logit": 15.984375
+          },
+          {
+            "rank": 10,
+            "token_id": 5322,
+            "token": " problems",
+            "probability": 2.7060508728027344e-05,
+            "logit": 15.96875
+          },
+          {
+            "rank": 11,
+            "token_id": 297,
+            "token": " o",
+            "probability": 2.6047229766845703e-05,
+            "logit": 15.9296875
+          },
+          {
+            "rank": 12,
+            "token_id": 389,
+            "token": " on",
+            "probability": 2.6047229766845703e-05,
+            "logit": 15.9296875
+          },
+          {
+            "rank": 13,
+            "token_id": 1055,
+            "token": "of",
+            "probability": 2.0265579223632812e-05,
+            "logit": 15.6796875
+          },
+          {
+            "rank": 14,
+            "token_id": 271,
+            "token": "\n\n",
+            "probability": 1.9669532775878906e-05,
+            "logit": 15.6484375
+          },
+          {
+            "rank": 15,
+            "token_id": 4940,
+            "token": " Of",
+            "probability": 1.8477439880371094e-05,
+            "logit": 15.5859375
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "context_before": "After reaching TD, the crew began to experience a series of",
+        "chosen_token": " issues",
+        "candidates": [
+          {
+            "rank": 1,
+            "token_id": 4714,
+            "token": " issues",
+            "probability": 0.0992431640625,
+            "logit": 19.078125
+          },
+          {
+            "rank": 2,
+            "token_id": 5322,
+            "token": " problems",
+            "probability": 0.07037353515625,
+            "logit": 18.734375
+          },
+          {
+            "rank": 3,
+            "token_id": 13495,
+            "token": " symptoms",
+            "probability": 0.046875,
+            "logit": 18.328125
+          },
+          {
+            "rank": 4,
+            "token_id": 27850,
+            "token": " failures",
+            "probability": 0.045440673828125,
+            "logit": 18.296875
+          },
+          {
+            "rank": 5,
+            "token_id": 4357,
+            "token": " events",
+            "probability": 0.0364990234375,
+            "logit": 18.078125
+          },
+          {
+            "rank": 6,
+            "token_id": 8641,
+            "token": " mal",
+            "probability": 0.03594970703125,
+            "logit": 18.0625
+          },
+          {
+            "rank": 7,
+            "token_id": 74459,
+            "token": " anomalies",
+            "probability": 0.035400390625,
+            "logit": 18.046875
+          },
+          {
+            "rank": 8,
+            "token_id": 56690,
+            "token": " faults",
+            "probability": 0.0218048095703125,
+            "logit": 17.5625
+          },
+          {
+            "rank": 9,
+            "token_id": 18511,
+            "token": " unusual",
+            "probability": 0.0159454345703125,
+            "logit": 17.25
+          },
+          {
+            "rank": 10,
+            "token_id": 34563,
+            "token": " abnormal",
+            "probability": 0.01522064208984375,
+            "logit": 17.203125
+          },
+          {
+            "rank": 11,
+            "token_id": 10971,
+            "token": " flight",
+            "probability": 0.0147552490234375,
+            "logit": 17.171875
+          },
+          {
+            "rank": 12,
+            "token_id": 19734,
+            "token": " electrical",
+            "probability": 0.01322174072265625,
+            "logit": 17.0625
+          },
+          {
+            "rank": 13,
+            "token_id": 1849,
+            "token": " system",
+            "probability": 0.0130157470703125,
+            "logit": 17.046875
+          },
+          {
+            "rank": 14,
+            "token_id": 18993,
+            "token": " warnings",
+            "probability": 0.01096343994140625,
+            "logit": 16.875
+          },
+          {
+            "rank": 15,
+            "token_id": 23546,
+            "token": " incidents",
+            "probability": 0.00908660888671875,
+            "logit": 16.6875
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "context_before": "After reaching TD, the crew began to experience a series of issues",
+        "chosen_token": ".",
+        "candidates": [
+          {
+            "rank": 1,
+            "token_id": 13,
+            "token": ".",
+            "probability": 0.2744140625,
+            "logit": 23.453125
+          },
+          {
+            "rank": 2,
+            "token_id": 11,
+            "token": ",",
+            "probability": 0.2039794921875,
+            "logit": 23.15625
+          },
+          {
+            "rank": 3,
+            "token_id": 448,
+            "token": " with",
+            "probability": 0.1639404296875,
+            "logit": 22.9375
+          },
+          {
+            "rank": 4,
+            "token_id": 2670,
+            "token": " including",
+            "probability": 0.07049560546875,
+            "logit": 22.09375
+          },
+          {
+            "rank": 5,
+            "token_id": 429,
+            "token": " that",
+            "probability": 0.05322265625,
+            "logit": 21.8125
+          },
+          {
+            "rank": 6,
+            "token_id": 25,
+            "token": ":",
+            "probability": 0.0338134765625,
+            "logit": 21.359375
+          },
+          {
+            "rank": 7,
+            "token_id": 389,
+            "token": " on",
+            "probability": 0.0186767578125,
+            "logit": 20.765625
+          },
+          {
+            "rank": 8,
+            "token_id": 1741,
+            "token": " such",
+            "probability": 0.0181121826171875,
+            "logit": 20.734375
+          },
+          {
+            "rank": 9,
+            "token_id": 323,
+            "token": " and",
+            "probability": 0.01500701904296875,
+            "logit": 20.546875
+          },
+          {
+            "rank": 10,
+            "token_id": 892,
+            "token": " which",
+            "probability": 0.01500701904296875,
+            "logit": 20.546875
+          },
+          {
+            "rank": 11,
+            "token_id": 5435,
+            "token": " related",
+            "probability": 0.01097869873046875,
+            "logit": 20.234375
+          },
+          {
+            "rank": 12,
+            "token_id": 304,
+            "token": " in",
+            "probability": 0.0072021484375,
+            "logit": 19.8125
+          },
+          {
+            "rank": 13,
+            "token_id": 2337,
+            "token": " during",
+            "probability": 0.007091522216796875,
+            "logit": 19.796875
+          },
+          {
+            "rank": 14,
+            "token_id": 26,
+            "token": ";",
+            "probability": 0.005523681640625,
+            "logit": 19.546875
+          },
+          {
+            "rank": 15,
+            "token_id": 510,
+            "token": ":\n",
+            "probability": 0.004871368408203125,
+            "logit": 19.421875
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "context_before": "After reaching TD, the crew began to experience a series of issues.",
+        "chosen_token": " The",
+        "candidates": [
+          {
+            "rank": 1,
+            "token_id": 576,
+            "token": " The",
+            "probability": 0.28125,
+            "logit": 20.296875
+          },
+          {
+            "rank": 2,
+            "token_id": 15920,
+            "token": " Which",
+            "probability": 0.11541748046875,
+            "logit": 19.40625
+          },
+          {
+            "rank": 3,
+            "token_id": 2379,
+            "token": " They",
+            "probability": 0.07000732421875,
+            "logit": 18.90625
+          },
+          {
+            "rank": 4,
+            "token_id": 5512,
+            "token": " First",
+            "probability": 0.063720703125,
+            "logit": 18.8125
+          },
+          {
+            "rank": 5,
+            "token_id": 3555,
+            "token": " What",
+            "probability": 0.04248046875,
+            "logit": 18.40625
+          },
+          {
+            "rank": 6,
+            "token_id": 3776,
+            "token": " One",
+            "probability": 0.02496337890625,
+            "logit": 17.875
+          },
+          {
+            "rank": 7,
+            "token_id": 4636,
+            "token": " After",
+            "probability": 0.021026611328125,
+            "logit": 17.703125
+          },
+          {
+            "rank": 8,
+            "token_id": 11954,
+            "token": " During",
+            "probability": 0.015869140625,
+            "logit": 17.421875
+          },
+          {
+            "rank": 9,
+            "token_id": 362,
+            "token": " A",
+            "probability": 0.0144500732421875,
+            "logit": 17.328125
+          },
+          {
+            "rank": 10,
+            "token_id": 2619,
+            "token": " There",
+            "probability": 0.01335906982421875,
+            "logit": 17.25
+          },
+          {
+            "rank": 11,
+            "token_id": 58556,
+            "token": " Initially",
+            "probability": 0.0119781494140625,
+            "logit": 17.140625
+          },
+          {
+            "rank": 12,
+            "token_id": 3197,
+            "token": " When",
+            "probability": 0.0100860595703125,
+            "logit": 16.96875
+          },
+          {
+            "rank": 13,
+            "token_id": 1096,
+            "token": " This",
+            "probability": 0.009185791015625,
+            "logit": 16.875
+          },
+          {
+            "rank": 14,
+            "token_id": 758,
+            "token": " In",
+            "probability": 0.00890350341796875,
+            "logit": 16.84375
+          },
+          {
+            "rank": 15,
+            "token_id": 1634,
+            "token": " As",
+            "probability": 0.0079803466796875,
+            "logit": 16.734375
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "context_before": "After reaching TD, the crew began to experience a series of issues. The",
+        "chosen_token": " first",
+        "candidates": [
+          {
+            "rank": 1,
+            "token_id": 1156,
+            "token": " first",
+            "probability": 0.0955810546875,
+            "logit": 19.15625
+          },
+          {
+            "rank": 2,
+            "token_id": 13627,
+            "token": " crew",
+            "probability": 0.0911865234375,
+            "logit": 19.109375
+          },
+          {
+            "rank": 3,
+            "token_id": 14135,
+            "token": " aircraft",
+            "probability": 0.057952880859375,
+            "logit": 18.65625
+          },
+          {
+            "rank": 4,
+            "token_id": 10971,
+            "token": " flight",
+            "probability": 0.04730224609375,
+            "logit": 18.453125
+          },
+          {
+            "rank": 5,
+            "token_id": 23915,
+            "token": " captain",
+            "probability": 0.036834716796875,
+            "logit": 18.203125
+          },
+          {
+            "rank": 6,
+            "token_id": 362,
+            "token": " A",
+            "probability": 0.02960205078125,
+            "logit": 17.984375
+          },
+          {
+            "rank": 7,
+            "token_id": 1429,
+            "token": " most",
+            "probability": 0.027374267578125,
+            "logit": 17.90625
+          },
+          {
+            "rank": 8,
+            "token_id": 1887,
+            "token": " main",
+            "probability": 0.0237884521484375,
+            "logit": 17.765625
+          },
+          {
+            "rank": 9,
+            "token_id": 4712,
+            "token": " engine",
+            "probability": 0.01465606689453125,
+            "logit": 17.28125
+          },
+          {
+            "rank": 10,
+            "token_id": 2115,
+            "token": " left",
+            "probability": 0.01442718505859375,
+            "logit": 17.265625
+          },
+          {
+            "rank": 11,
+            "token_id": 6028,
+            "token": " primary",
+            "probability": 0.011962890625,
+            "logit": 17.078125
+          },
+          {
+            "rank": 12,
+            "token_id": 21106,
+            "token": " engines",
+            "probability": 0.01177215576171875,
+            "logit": 17.0625
+          },
+          {
+            "rank": 13,
+            "token_id": 1290,
+            "token": " right",
+            "probability": 0.0083465576171875,
+            "logit": 16.71875
+          },
+          {
+            "rank": 14,
+            "token_id": 17708,
+            "token": " pilot",
+            "probability": 0.007602691650390625,
+            "logit": 16.625
+          },
+          {
+            "rank": 15,
+            "token_id": 434,
+            "token": " F",
+            "probability": 0.00748443603515625,
+            "logit": 16.609375
+          }
+        ]
+      }
+    ]
+  }
+}

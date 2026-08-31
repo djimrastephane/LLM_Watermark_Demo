@@ -1,0 +1,8 @@
+torch
+transformers
+accelerate
+pandas
+numpy
+matplotlib
+jupyter
+pytest
