@@ -51,7 +51,13 @@ simulated keyed sampling → statistical detection experiment
 
 - Python 3.11+
 - torch, transformers, accelerate, pandas, numpy, matplotlib, pytest (see `requirements.txt`)
-- Mathematica 14.x (preferred) to open `notebooks/02_oil_gas_text_watermarking.nb`
+- **Mathematica 14.x is required** to open and interact with
+  `notebooks/02_oil_gas_text_watermarking.nb`. The free Wolfram Player will not work: this
+  notebook's interactivity depends on live code evaluation (the Setup section imports the JSON
+  data and defines the watermarking functions that every `Manipulate` widget needs), which
+  Player does not allow for a plain `.nb` file — it can only run content specifically deployed
+  as CDF. Without Mathematica, the notebook's content is not currently viewable at all; see the
+  [Disclaimer](#disclaimer) section below for why this matters for accessibility.
 
 ## Setup
 
@@ -95,3 +101,10 @@ The Mathematica notebook has two layers:
 
 This project is an educational simulator. It does not reproduce Anthropic's Claude
 watermarking implementation.
+
+**Access limitation.** The project's stated audience is oil & gas professionals with little to
+no GenAI/programming background — exactly the group least likely to already have a Mathematica
+license. Right now, Mathematica is a hard requirement to see any of the Presentation Mode
+content (see [Requirements](#requirements)); there is no working no-install fallback yet. This
+is a known gap, not a design choice — see the Requirements section for what would fix it
+(deploying as CDF, or hosting on Wolfram Cloud).
