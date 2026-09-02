@@ -124,6 +124,7 @@ Cell["Grid[
   {
     {Style[\"Token\", Bold], \"A chunk of text an LLM works with -- often a word, part of a word, or a punctuation mark, not always a full English word.\"},
     {Style[\"Probability\", Bold], \"How strongly the model prefers each possible next token, computed by the model for the current context.\"},
+    {Style[\"Entropy\", Bold], \"A single number summarizing how spread out the model's word-choice probabilities are at one decision point. Low entropy means the model is nearly certain about one word, leaving little room for a watermark to shift the choice; high entropy means several words are close contenders, giving the watermark more room to work with. Measured in bits -- see Section 7.\"},
     {Style[\"Secret key\", Bold], \"A password-like string that determines how the simulated watermark nudges word choices. Different keys nudge choices differently.\"},
     {Style[\"Watermark\", Bold], \"In this simulator, a way of preferring certain already-plausible word choices over others, based on a secret key and the surrounding context -- never a way of choosing an implausible word.\"},
     {Style[\"Detector\", Bold], \"A process that checks a stretch of text against a candidate key, looking for a statistical pattern showing word choices are more consistent with a watermarked (keyed) process than with plain, unwatermarked sampling.\"},
