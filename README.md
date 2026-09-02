@@ -97,6 +97,28 @@ The Mathematica notebook has two layers:
   statistical signal accumulation, a Monte Carlo experiment, an optional z-score detector, a
   worked example pulled dynamically from the real data, limitations, and reproducibility.
 
+### Screenshots
+
+Since Mathematica is currently required to open the notebook (see
+[Requirements](#requirements)), here is what several sections actually produce, rendered
+directly from the notebook's real code against the real exported Qwen data — not mockups.
+
+**The pipeline, and one real token decision explained candidate-by-candidate:**
+
+<img src="docs/screenshots/02_pipeline_diagram.png" width="380" alt="Pipeline diagram: oil & gas prompt to Qwen to real next-token probabilities to secret key and context to simulated reweighting to sampled word to detector"> <img src="docs/screenshots/03_one_real_decision.png" width="500" alt="Table of real Qwen candidate words for the prompt 'With TD reached, the drilling team began to', each with its real probability, key score, and simulated watermarked probability">
+
+**A real 8-step continuation, replayed decision by decision (never a rewritten sentence):**
+
+<img src="docs/screenshots/04_sequence_of_decisions.png" width="700" alt="Table of 8 real consecutive decision points from one actual Qwen continuation, showing the normal token Qwen chose next to the token the simulated watermark would have preferred at that same step">
+
+**Why technical language leaves a watermark less room to work with, measured on real data:**
+
+<img src="docs/screenshots/05_technical_vs_generic.png" width="500" alt="Bar charts comparing next-token probability distributions for a generic prompt (top-1 probability 31.2%) versus a technical oilfield prompt (top-1 probability 93.6%)">
+
+**How the statistical signal separates from chance as more decisions accumulate:**
+
+<img src="docs/screenshots/06_signal_accumulation.png" width="600" alt="Line plot showing the mean keyed score for normal sampling settling near 0.5 while simulated watermark sampling settles above it as the number of token decisions grows from 20 to 1000">
+
 ## Disclaimer
 
 This project is an educational simulator. It does not reproduce Anthropic's Claude
