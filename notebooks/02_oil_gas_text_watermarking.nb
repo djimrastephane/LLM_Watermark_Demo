@@ -312,7 +312,99 @@ Module[{genericEntry, techEntry, genericStats, techStats},
   }]
 ]", "Input"],
 
-Cell["8. Common Misconceptions", "Subsection"],
+Cell["8. A Larger-Scale Check: 80 Real Prompts, 4 Categories", "Subsection"],
+
+Cell["Section 7 makes its point with one generic prompt and one technical prompt. This section checks whether that pattern holds up across a real sample instead of a single comparison: 80 prompts, split evenly across four categories -- numeric/unit continuations, oilfield procedural/verb continuations, equipment/entity-naming continuations, and generic non-technical control -- run through the same extraction pipeline and the exact same watermarkedDistribution/keyedScore functions already defined in Setup above. Nothing below is hardcoded; every number is computed live from the imported JSON. Full methodology, prompt list, and raw data live in experiments/ in the project repository.", "Text"],
+
+Cell["experimentDataFile = FileNameJoin[{NotebookDirectory[], \"..\", \"data\", \"processed\", \"entropy_experiment.json\"}];
+experimentDataReady = FileExistsQ[experimentDataFile];
+If[!experimentDataReady,
+  Print[Style[\"Larger-scale experiment data not found at: \" <> experimentDataFile <>
+    \"\\nRun experiments/run_extraction.py first, then re-evaluate this cell.\", Red, Bold]],
+  experimentData = Import[experimentDataFile, \"RawJSON\"];
+  experimentPrompts = experimentData[\"prompts\"];
+  Print[\"Loaded \", Length[experimentPrompts], \" prompts for the larger-scale check\"];
+]", "Input"],
+
+Cell["categoryOf[promptId_String] := Which[
+  StringStartsQ[promptId, \"NUM\"], \"numeric_unit\",
+  StringStartsQ[promptId, \"VERB\"], \"verb_procedural\",
+  StringStartsQ[promptId, \"EQUIP\"], \"equipment_entity\",
+  StringStartsQ[promptId, \"GEN\"], \"generic_control\",
+  True, \"unknown\"
+];
+
+entropyAndTop1[candidates_] := Module[{probs, normProbs, top1, entropyBits},
+  probs = (#[\"probability\"]) & /@ candidates;
+  normProbs = probs / Total[probs];
+  top1 = Max[normProbs];
+  entropyBits = -Total[normProbs * Log2[normProbs]];
+  <|\"entropy\" -> entropyBits, \"top1\" -> top1|>
+];
+
+watermarkFlipsTopPick[candidates_, prompt_String, key_String, strength_] := Module[
+  {tokens, normProbs, normalTop, wDist, watermarkTop},
+  tokens = (#[\"token\"]) & /@ candidates;
+  normProbs = (#[\"probability\"]) & /@ candidates;
+  normProbs = normProbs / Total[normProbs];
+  normalTop = tokens[[Ordering[normProbs, -1][[1]]]];
+  wDist = watermarkedDistribution[candidates, key, prompt, strength];
+  watermarkTop = First[Keys[ReverseSort[wDist]]];
+  normalTop != watermarkTop
+];
+
+experimentByCategory = GroupBy[experimentPrompts, categoryOf[#[\"prompt_id\"]] &];
+categoryOrder = {\"numeric_unit\", \"verb_procedural\", \"equipment_entity\", \"generic_control\"};", "Input"],
+
+Cell["Entropy and top-1 probability, by category (real Qwen data, n=20 each):", "Text"],
+
+Cell["entropySummaryRows = Table[
+  Module[{entries = experimentByCategory[cat], stats},
+    stats = entropyAndTop1[#[\"candidates\"]] & /@ entries;
+    {cat, Length[entries],
+     ToString[NumberForm[Mean[(#[\"entropy\"]) & /@ stats], {3, 2}]],
+     ToString[NumberForm[100 Mean[(#[\"top1\"]) & /@ stats], {3, 1}]] <> \"%\"}
+  ],
+  {cat, categoryOrder}
+];
+
+Grid[
+  Prepend[entropySummaryRows, {\"Category\", \"n\", \"Mean entropy (bits)\", \"Mean top-1 probability\"}],
+  Frame -> All, Background -> {None, {LightGray, None}}, Alignment -> Center
+]", "Input"],
+
+Cell["Watermark flip rate by category and strength -- the fraction of prompts where the simulated watermark changes which candidate is preferred, reusing the SAME watermarkedDistribution function defined in Setup:", "Text"],
+
+Cell["flipRateSummaryRows = Table[
+  Module[{entries = experimentByCategory[cat]},
+    Prepend[
+      Table[
+        Module[{flips},
+          flips = Count[
+            (watermarkFlipsTopPick[#[\"candidates\"], #[\"prompt\"], \"8F3A91C7\", strength]) & /@ entries,
+            True
+          ];
+          ToString[flips] <> \"/\" <> ToString[Length[entries]] <> \" (\" <>
+            ToString[NumberForm[100 flips/Length[entries], {3, 0}]] <> \"%)\"
+        ],
+        {strength, {0.5, 1.0, 2.0}}
+      ],
+      cat
+    ]
+  ],
+  {cat, categoryOrder}
+];
+
+Grid[
+  Prepend[flipRateSummaryRows, {\"Category\", \"strength=0.5\", \"strength=1.0\", \"strength=2.0\"}],
+  Frame -> All, Background -> {None, {LightGray, None}}, Alignment -> Center
+]", "Input"],
+
+Cell["Two things worth noting that a single example could not show. First, the numeric/unit category is not uniformly low-entropy -- a continuation like \\\"64/64 ___\\\" (a choke setting, with no single implied unit) runs about as high-entropy as ordinary narrative text; the real driver is whether the number is immediately followed by an implied closed-class unit (a duration, a pressure, a depth), not \\\"numbers\\\" as a category. Second, oilfield procedural/verb language (\\\"the crew immediately ___\\\", \\\"the operator began to ___\\\") turned out to be the MOST watermark-susceptible category here -- more so than generic non-technical prose, not merely comparable to it. That is a real finding from this run, not an assumption carried over from Section 7.", "Text"],
+
+Cell["This is still a modest sample (n=20 per category), one fixed demo key, one simplified reweighting formula, and one metric (whether the single top pick changes, not the full distribution). It is real evidence that the Section 7 pattern generalizes and gets more precise under a larger sample -- not a definitive claim about any production watermarking system.", "Text"],
+
+Cell["9. Common Misconceptions", "Subsection"],
 
 Cell["\"No hidden text is inserted.\" The watermark does not add secret characters, invisible text, or metadata. It only nudges which of several already-plausible words gets chosen.", "Item"],
 
@@ -322,7 +414,7 @@ Cell["\"Detection is probabilistic.\" A single word, or even a single sentence, 
 
 Cell["\"Short text may not contain enough signal.\" A short passage may not contain enough word-choice decisions for the statistical signal to separate from ordinary random variation (see the signal-accumulation chart in Technical Mode).", "Item"],
 
-Cell["9. Plain-Language Score Interpretation", "Subsection"],
+Cell["10. Plain-Language Score Interpretation", "Subsection"],
 
 Cell["A z-score is a number -- useful for the math, but not very intuitive on its own. This section maps a demo z-score onto a plain-language sentence instead. The thresholds below are specific to this teaching simulator; they are illustrative, not real detection thresholds used by any production watermarking system.", "Text"],
 
