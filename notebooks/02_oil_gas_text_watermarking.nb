@@ -312,9 +312,9 @@ Module[{genericEntry, techEntry, genericStats, techStats},
   }]
 ]", "Input"],
 
-Cell["8. A Larger-Scale Check: 80 Real Prompts, 4 Categories", "Subsection"],
+Cell["8. A Larger-Scale Check: 80 Real Examples", "Subsection"],
 
-Cell["Section 7 makes its point with one generic prompt and one technical prompt. This section checks whether that pattern holds up across a real sample instead of a single comparison: 80 prompts, split evenly across four categories -- numeric/unit continuations, oilfield procedural/verb continuations, equipment/entity-naming continuations, and generic non-technical control -- run through the same extraction pipeline and the exact same watermarkedDistribution/keyedScore functions already defined in Setup above. Nothing below is hardcoded; every number is computed live from the imported JSON. Full methodology, prompt list, and raw data live in experiments/ in the project repository.", "Text"],
+Cell["Section 7 made this point with one example. This section checks whether the same pattern holds up across a much larger, real set of examples: 80 sentence starts, grouped into four everyday categories relevant to oilfield reporting, run through the exact same real Qwen model and the exact same simulated watermark already used throughout this notebook. Nothing below is invented -- every number comes from the imported data. The full statistical detail, across multiple watermark strengths, is available in Technical Mode below for anyone who wants to dig deeper.", "Text"],
 
 Cell["experimentDataFile = FileNameJoin[{NotebookDirectory[], \"..\", \"data\", \"processed\", \"entropy_experiment.json\"}];
 experimentDataReady = FileExistsQ[experimentDataFile];
@@ -323,7 +323,7 @@ If[!experimentDataReady,
     \"\\nRun experiments/run_extraction.py first, then re-evaluate this cell.\", Red, Bold]],
   experimentData = Import[experimentDataFile, \"RawJSON\"];
   experimentPrompts = experimentData[\"prompts\"];
-  Print[\"Loaded \", Length[experimentPrompts], \" prompts for the larger-scale check\"];
+  Print[\"Loaded \", Length[experimentPrompts], \" examples for the larger-scale check\"];
 ]", "Input"],
 
 Cell["categoryOf[promptId_String] := Which[
@@ -333,6 +333,14 @@ Cell["categoryOf[promptId_String] := Which[
   StringStartsQ[promptId, \"GEN\"], \"generic_control\",
   True, \"unknown\"
 ];
+
+categoryLabels = <|
+  \"numeric_unit\" -> \"Numbers & measurements\",
+  \"verb_procedural\" -> \"Describing actions\",
+  \"equipment_entity\" -> \"Naming equipment\",
+  \"generic_control\" -> \"Everyday language (comparison)\"
+|>;
+categoryOrder = {\"numeric_unit\", \"verb_procedural\", \"equipment_entity\", \"generic_control\"};
 
 entropyAndTop1[candidates_] := Module[{probs, normProbs, top1, entropyBits},
   probs = (#[\"probability\"]) & /@ candidates;
@@ -353,56 +361,39 @@ watermarkFlipsTopPick[candidates_, prompt_String, key_String, strength_] := Modu
   normalTop != watermarkTop
 ];
 
-experimentByCategory = GroupBy[experimentPrompts, categoryOf[#[\"prompt_id\"]] &];
-categoryOrder = {\"numeric_unit\", \"verb_procedural\", \"equipment_entity\", \"generic_control\"};", "Input"],
+experimentByCategory = GroupBy[experimentPrompts, categoryOf[#[\"prompt_id\"]] &];", "Input"],
 
-Cell["Entropy and top-1 probability, by category (real Qwen data, n=20 each):", "Text"],
+Cell["For each category: how often the AI was already almost certain of the next word, and how often a hidden watermark (at this notebook's default strength) changed that word anyway:", "Text"],
 
-Cell["entropySummaryRows = Table[
-  Module[{entries = experimentByCategory[cat], stats},
+Cell["simpleSummaryRows = Table[
+  Module[{entries = experimentByCategory[cat], stats, meanTop1, flips},
     stats = entropyAndTop1[#[\"candidates\"]] & /@ entries;
-    {cat, Length[entries],
-     ToString[NumberForm[Mean[(#[\"entropy\"]) & /@ stats], {3, 2}]],
-     ToString[NumberForm[100 Mean[(#[\"top1\"]) & /@ stats], {3, 1}]] <> \"%\"}
+    meanTop1 = Mean[(#[\"top1\"]) & /@ stats];
+    flips = Count[
+      (watermarkFlipsTopPick[#[\"candidates\"], #[\"prompt\"], \"8F3A91C7\", 0.5]) & /@ entries,
+      True
+    ];
+    {categoryLabels[cat],
+     ToString[NumberForm[100 meanTop1, {3, 0}]] <> \"%\",
+     ToString[flips] <> \" out of \" <> ToString[Length[entries]]}
   ],
   {cat, categoryOrder}
 ];
 
 Grid[
-  Prepend[entropySummaryRows, {\"Category\", \"n\", \"Mean entropy (bits)\", \"Mean top-1 probability\"}],
-  Frame -> All, Background -> {None, {LightGray, None}}, Alignment -> Center
-]", "Input"],
-
-Cell["Watermark flip rate by category and strength -- the fraction of prompts where the simulated watermark changes which candidate is preferred, reusing the SAME watermarkedDistribution function defined in Setup:", "Text"],
-
-Cell["flipRateSummaryRows = Table[
-  Module[{entries = experimentByCategory[cat]},
-    Prepend[
-      Table[
-        Module[{flips},
-          flips = Count[
-            (watermarkFlipsTopPick[#[\"candidates\"], #[\"prompt\"], \"8F3A91C7\", strength]) & /@ entries,
-            True
-          ];
-          ToString[flips] <> \"/\" <> ToString[Length[entries]] <> \" (\" <>
-            ToString[NumberForm[100 flips/Length[entries], {3, 0}]] <> \"%)\"
-        ],
-        {strength, {0.5, 1.0, 2.0}}
-      ],
-      cat
-    ]
+  Prepend[simpleSummaryRows,
+    {\"Category (20 examples each)\", \"AI already almost certain of the next word\",
+     \"Hidden watermark changed the word anyway\"}
   ],
-  {cat, categoryOrder}
-];
-
-Grid[
-  Prepend[flipRateSummaryRows, {\"Category\", \"strength=0.5\", \"strength=1.0\", \"strength=2.0\"}],
-  Frame -> All, Background -> {None, {LightGray, None}}, Alignment -> Center
+  Frame -> All, Background -> {None, {LightGray, None}}, Alignment -> Center,
+  ItemSize -> {{22, 18, 18}}
 ]", "Input"],
 
-Cell["Two things worth noting that a single example could not show. First, the numeric/unit category is not uniformly low-entropy -- a continuation like \\\"64/64 ___\\\" (a choke setting, with no single implied unit) runs about as high-entropy as ordinary narrative text; the real driver is whether the number is immediately followed by an implied closed-class unit (a duration, a pressure, a depth), not \\\"numbers\\\" as a category. Second, oilfield procedural/verb language (\\\"the crew immediately ___\\\", \\\"the operator began to ___\\\") turned out to be the MOST watermark-susceptible category here -- more so than generic non-technical prose, not merely comparable to it. That is a real finding from this run, not an assumption carried over from Section 7.", "Text"],
+Cell["In plain terms: when an AI is filling in a specific number, pressure, depth, or duration, it is usually already very confident about the one correct answer -- there is almost no room for a hidden watermark to quietly swap it for something else, and this check confirms that almost never happens. But when an AI is describing what a crew or operator did next -- picking an action word like \\\"pulled,\\\" \\\"pumped,\\\" or \\\"lifted\\\" -- several answers are all equally reasonable, and that is exactly where a watermark has the most room to quietly prefer one word over another.", "Text"],
 
-Cell["This is still a modest sample (n=20 per category), one fixed demo key, one simplified reweighting formula, and one metric (whether the single top pick changes, not the full distribution). It is real evidence that the Section 7 pattern generalizes and gets more precise under a larger sample -- not a definitive claim about any production watermarking system.", "Text"],
+Cell["Two things this larger check reveals that one example could not. First, not every number is equally locked in -- a choke setting like \\\"64/64\\\" does not point to one obvious next word the way a duration like \\\"for 15 ___\\\" does, so some numeric examples still leave the AI several reasonable options. Second, and more surprising: the action-describing language in this test turned out to have the MOST room for a watermark to work with -- more than ordinary, non-technical writing. That was not assumed going in; it is what this run actually found.", "Text"],
+
+Cell["This check used a modest number of examples (20 per category), one demonstration key, and this notebook's own simplified watermark -- not any real production system. It supports the pattern from Section 7 with more evidence; it does not prove anything about how Anthropic's or any other company's actual watermark behaves.", "Text"],
 
 Cell["9. Common Misconceptions", "Subsection"],
 
@@ -670,7 +661,72 @@ Cell["Column[{
   \"Watermark strength used in this demo: 0.5\",
   \"\",
   \"To regenerate the JSON: rerun notebooks/01_extract_next_token_probabilities.ipynb, then re-evaluate this notebook from the top.\"
-}]", "Input"]
+}]", "Input"],
+
+Cell["13. Larger-scale check -- full statistical detail", "Subsection"],
+
+Cell["Presentation Mode's Section 8 shows one watermark strength and a plain-language summary. This is the full detail behind it: entropy in bits (not just top-1 probability), and the watermark flip rate at three different strengths, by category. Reuses the categoryOf/categoryLabels/entropyAndTop1/watermarkFlipsTopPick/experimentByCategory definitions from Section 8 above -- nothing here is redefined.", "Text"],
+
+Cell["entropySummaryRows = Table[
+  Module[{entries = experimentByCategory[cat], stats},
+    stats = entropyAndTop1[#[\"candidates\"]] & /@ entries;
+    {categoryLabels[cat], Length[entries],
+     ToString[NumberForm[Mean[(#[\"entropy\"]) & /@ stats], {3, 2}]],
+     ToString[NumberForm[100 Mean[(#[\"top1\"]) & /@ stats], {3, 1}]] <> \"%\"}
+  ],
+  {cat, categoryOrder}
+];
+
+Grid[
+  Prepend[entropySummaryRows, {\"Category\", \"n\", \"Mean entropy (bits)\", \"Mean top-1 probability\"}],
+  Frame -> All, Background -> {None, {LightGray, None}}, Alignment -> Center
+]", "Input"],
+
+Cell["flipRateSummaryRows = Table[
+  Module[{entries = experimentByCategory[cat]},
+    Prepend[
+      Table[
+        Module[{flips},
+          flips = Count[
+            (watermarkFlipsTopPick[#[\"candidates\"], #[\"prompt\"], \"8F3A91C7\", strength]) & /@ entries,
+            True
+          ];
+          ToString[flips] <> \"/\" <> ToString[Length[entries]] <> \" (\" <>
+            ToString[NumberForm[100 flips/Length[entries], {3, 0}]] <> \"%)\"
+        ],
+        {strength, {0.5, 1.0, 2.0}}
+      ],
+      categoryLabels[cat]
+    ]
+  ],
+  {cat, categoryOrder}
+];
+
+Grid[
+  Prepend[flipRateSummaryRows, {\"Category\", \"strength=0.5\", \"strength=1.0\", \"strength=2.0\"}],
+  Frame -> All, Background -> {None, {LightGray, None}}, Alignment -> Center
+]", "Input"],
+
+Cell["Raw per-prompt detail (entropy, top-1 probability, whether strength=0.5 flipped the pick), by category:", "Text"],
+
+Cell["Manipulate[
+  Module[{entries = experimentByCategory[cat], rows},
+    rows = Table[
+      Module[{stats = entropyAndTop1[e[\"candidates\"]], flipped},
+        flipped = watermarkFlipsTopPick[e[\"candidates\"], e[\"prompt\"], \"8F3A91C7\", 0.5];
+        {e[\"prompt_id\"], ToString[NumberForm[stats[\"entropy\"], {3, 2}]],
+         ToString[NumberForm[100 stats[\"top1\"], {3, 1}]] <> \"%\",
+         If[flipped, \"yes\", \"no\"], e[\"prompt\"]}
+      ],
+      {e, entries}
+    ];
+    Grid[
+      Prepend[rows, {\"ID\", \"Entropy\", \"Top-1\", \"Flipped?\", \"Prompt\"}],
+      Frame -> All, Background -> {None, {LightGray, None}}, Alignment -> Left
+    ]
+  ],
+  {{cat, \"numeric_unit\", \"Category\"}, Thread[categoryOrder -> (categoryLabels[#] & /@ categoryOrder)]}
+]", "Input"]
 
 }, Closed]]
 
