@@ -157,50 +157,66 @@ Graph[diagramEdges,
 
 Cell["5. One Real Token Decision, Explained", "Subsection"],
 
-Cell["Pick a real oilfield prompt below. The table shows Qwen's actual candidate words at that exact decision point, each one's real probability, its pseudorandom key score, and the resulting simulated watermarked probability. \"Normal selection\" is the candidate Qwen itself ranks highest. \"Watermarked selection\" is the candidate the simulated key ranks highest. Both are drawn from the SAME real candidate list -- the key never adds a new word.", "Text"],
+Cell["Pick a real oilfield prompt below. The table shows Qwen's actual candidate words at that exact decision point, each one's real probability, and the resulting simulated watermarked probability. Green candidates are ones the secret key pushes toward; red candidates are ones it pushes away from -- the \"Shift\" column shows exactly how much. \"Normal selection\" is the candidate Qwen itself ranks highest. \"Watermarked selection\" is the candidate the simulated key ranks highest. Both are drawn from the SAME real candidate list -- the key never adds a new word. This defaults to a safety-critical example (a BOP test pressure) at a strength where the watermark actually changes the answer -- not one where nothing visibly happens.", "Text"],
 
 Cell["oneDecisionTable[candidates_, key_String, context_String, strength_] := Module[
-  {tokens, normProbs, keyScores, wDist, wProbsOrdered, rows},
+  {tokens, normProbs, keyScores, meanScore, wDist, wProbsOrdered, rows},
   tokens = (#[\"token\"]) & /@ candidates;
   normProbs = (#[\"probability\"]) & /@ candidates;
   normProbs = normProbs / Total[normProbs];
   keyScores = keyedScore[key, context, #] & /@ tokens;
+  meanScore = Mean[keyScores];
   wDist = watermarkedDistribution[candidates, key, context, strength];
   wProbsOrdered = wDist[#] & /@ tokens;
   rows = Table[
-    {tokens[[i]],
-     ToString[NumberForm[100 normProbs[[i]], {3, 1}]] <> \"%\",
-     ToString[NumberForm[keyScores[[i]], {4, 3}]],
-     ToString[NumberForm[100 wProbsOrdered[[i]], {3, 1}]] <> \"%\"},
+    Module[{shiftPP = 100 (wProbsOrdered[[i]] - normProbs[[i]]), favored = keyScores[[i]] > meanScore},
+      {tokens[[i]],
+       ToString[NumberForm[100 normProbs[[i]], {3, 1}]] <> \"%\",
+       Style[If[favored, \"favored\", \"disfavored\"], If[favored, Darker[Green], Darker[Red]]],
+       ToString[NumberForm[100 wProbsOrdered[[i]], {3, 1}]] <> \"%\",
+       Style[
+         (If[shiftPP >= 0, \"+\", \"\"]) <> ToString[NumberForm[shiftPP, {3, 1}]] <> \"pp\",
+         If[shiftPP >= 0, Darker[Green], Darker[Red]]
+       ]}
+    ],
     {i, Length[tokens]}
   ];
   Grid[
-    Prepend[rows, {\"Candidate\", \"Normal probability\", \"Key score\", \"Watermarked probability\"}],
+    Prepend[rows, {\"Candidate\", \"Normal probability\", \"Secret key\", \"Watermarked probability\", \"Shift\"}],
     Frame -> All, Background -> {None, {LightGray, None}}, Alignment -> Center
   ]
 ];
 
 Manipulate[
-  Module[{entry, normalPick, wDist, watermarkPick},
+  Module[{entry, normalPick, wDist, watermarkPick, flipped},
     entry = SelectFirst[promptList, #[\"prompt_id\"] == promptId &];
     normalPick = entry[\"candidates\"][[1]][\"token\"];
     wDist = watermarkedDistribution[entry[\"candidates\"], key, entry[\"prompt\"], strength];
     watermarkPick = First[Keys[ReverseSort[wDist]]];
+    flipped = normalPick != watermarkPick;
     Column[{
       Style[\"Context: \\\"\" <> entry[\"prompt\"] <> \" ...\\\"\", Bold],
       oneDecisionTable[entry[\"candidates\"], key, entry[\"prompt\"], strength],
       Row[{Style[\"Normal selection: \", Bold], normalPick}],
       Row[{Style[\"Watermarked selection: \", Bold], watermarkPick}],
-      Style[
-        \"The key did not introduce the word \\\"\" <> watermarkPick <>
-        \"\\\". Qwen already considered it plausible. The watermark only changed its sampling preference.\",
-        Italic
+      If[flipped,
+        Style[
+          \"Warning: the watermark changed which candidate comes out on top -- from \\\"\" <> normalPick <>
+          \"\\\" to \\\"\" <> watermarkPick <>
+          \"\\\". Both were words Qwen already considered plausible, but the watermark, not the model's own judgment, decided which one actually gets written. For this example, that is the difference between two materially different values.\",
+          Bold, Darker[Red]
+        ],
+        Style[
+          \"No change at this setting: \\\"\" <> watermarkPick <>
+          \"\\\" is still the word Qwen would have chosen on its own. Try a higher strength, or a different prompt, to see when that stops being true.\",
+          Italic
+        ]
       ]
     }]
   ],
-  {{promptId, First[promptIds], \"Prompt\"}, promptIds},
+  {{promptId, \"PSAFETY\", \"Prompt\"}, promptIds},
   {{key, \"8F3A91C7\", \"Secret key\"}, InputField[#, String] &},
-  {{strength, 0.5, \"Watermark strength\"}, 0, 2}
+  {{strength, 1.5, \"Watermark strength\"}, 0, 2}
 ]", "Input"],
 
 Cell["6. A Sequence of Real Decisions", "Subsection"],
@@ -658,7 +674,7 @@ Cell["Column[{
   \"Number of prompts: \" <> ToString[Length[promptList]],
   \"Top-K: \" <> ToString[qwenData[\"metadata\"][\"top_k\"]],
   \"Secret key used in this demo: 8F3A91C7\",
-  \"Watermark strength used in this demo: 0.5\",
+  \"Watermark strength used through most of this demo: 0.5 (Section 5's safety-critical example defaults to 1.5 specifically because that is where the watermark actually changes the answer)\",
   \"\",
   \"To regenerate the JSON: rerun notebooks/01_extract_next_token_probabilities.ipynb, then re-evaluate this notebook from the top.\"
 }]", "Input"],

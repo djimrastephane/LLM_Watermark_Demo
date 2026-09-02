@@ -1350,6 +1350,118 @@
           "logit": 17.015625
         }
       ]
+    },
+    {
+      "prompt_id": "PSAFETY",
+      "prompt": "The BOP was tested to a pressure of ",
+      "input_token_count": 10,
+      "candidates": [
+        {
+          "rank": 1,
+          "token_id": 16,
+          "token": "1",
+          "probability": 0.3515625,
+          "logit": 21.109375
+        },
+        {
+          "rank": 2,
+          "token_id": 17,
+          "token": "2",
+          "probability": 0.139892578125,
+          "logit": 20.1875
+        },
+        {
+          "rank": 3,
+          "token_id": 18,
+          "token": "3",
+          "probability": 0.1292724609375,
+          "logit": 20.109375
+        },
+        {
+          "rank": 4,
+          "token_id": 22,
+          "token": "7",
+          "probability": 0.10552978515625,
+          "logit": 19.90625
+        },
+        {
+          "rank": 5,
+          "token_id": 19,
+          "token": "4",
+          "probability": 0.06500244140625,
+          "logit": 19.421875
+        },
+        {
+          "rank": 6,
+          "token_id": 20,
+          "token": "5",
+          "probability": 0.057403564453125,
+          "logit": 19.296875
+        },
+        {
+          "rank": 7,
+          "token_id": 21,
+          "token": "6",
+          "probability": 0.057403564453125,
+          "logit": 19.296875
+        },
+        {
+          "rank": 8,
+          "token_id": 23,
+          "token": "8",
+          "probability": 0.0506591796875,
+          "logit": 19.171875
+        },
+        {
+          "rank": 9,
+          "token_id": 24,
+          "token": "9",
+          "probability": 0.035369873046875,
+          "logit": 18.8125
+        },
+        {
+          "rank": 10,
+          "token_id": 15,
+          "token": "0",
+          "probability": 0.0035552978515625,
+          "logit": 16.515625
+        },
+        {
+          "rank": 11,
+          "token_id": 48312,
+          "token": "�",
+          "probability": 0.0010433197021484375,
+          "logit": 15.2890625
+        },
+        {
+          "rank": 12,
+          "token_id": 30743,
+          "token": " ____",
+          "probability": 0.000762939453125,
+          "logit": 14.9765625
+        },
+        {
+          "rank": 13,
+          "token_id": 220,
+          "token": " ",
+          "probability": 0.00039887428283691406,
+          "logit": 14.328125
+        },
+        {
+          "rank": 14,
+          "token_id": 320,
+          "token": " (",
+          "probability": 0.0001049041748046875,
+          "logit": 12.9921875
+        },
+        {
+          "rank": 15,
+          "token_id": 70467,
+          "token": "�",
+          "probability": 8.296966552734375e-05,
+          "logit": 12.7578125
+        }
+      ]
     }
   ],
   "generation": {
